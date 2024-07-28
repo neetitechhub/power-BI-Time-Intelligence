@@ -3,7 +3,7 @@ power BI Time Intelligence
 
 **PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR vs DATESBETWEEN vs DATE ADD**
 
-**1. PARALLELPERIOD(<Dates>, <Number of Intervals>, <Interval>)**
+**1. PARALLELPERIOD(Dates, Number of Intervals, Interval)**
 
 it is used to return a table that contains a column of dates that represent a parallel period in a previous or future time period relative to the given date column.
 
