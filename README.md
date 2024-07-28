@@ -3,13 +3,15 @@ power BI Time Intelligence
 
 **PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR vs DATESBETWEEN vs DATE ADD**
 
-**1. PARALLELPERIOD(<dates>, <number_of_intervals>, <interval>)**
+**1. PARALLELPERIOD(<Dates>, <Number of Intervals>, <Interval>)**
 
-dates: A column containing dates.
+it is used to return a table that contains a column of dates that represent a parallel period in a previous or future time period relative to the given date column.
 
-number_of_intervals: The number of intervals to move forward or backward. A positive value moves forward, and a negative value moves backward.
+**dates:** A column containing dates.
 
-interval: The interval by which to shift the dates. Can be DAY, MONTH, QUARTER, or YEAR.
+**number_of_intervals:** The number of intervals to move forward or backward. A positive value moves forward, and a negative value moves backward.
+
+**interval:** The interval by which to shift the dates. Can be DAY, MONTH, QUARTER, or YEAR.
 
 Sales from the same period in the previous year:
 
@@ -19,8 +21,10 @@ CALCULATE(
     PARALLELPERIOD(DateTable[Date], -1, YEAR)
 )
 
-**2. DATESINPERIOD(<dates>, <start_date>, <number_of_intervals>, <interval>)**
-   
+**2. DATEINPERIOD(<Dates>, <StartDate>, <NumberOfIntervals>, <Interval>)**
+
+it returns a single-column table of dates shifted from the first date in the given dates column. It returns all the dates in a period, based on a specified date, number of intervals, and interval type.
+
 dates: A column containing dates.
 
 start_date: The date that represents the start date.
@@ -37,7 +41,28 @@ CALCULATE(
     DATESINPERIOD(DateTable[Date], MAX(DateTable[Date]), -12, MONTH)
 )
 
+**Key Differences**
+
+**Context:**
+
+PARALLELPERIOD is used to compare parallel periods. For example, comparing this year to the same period last year.
+DATESINPERIOD is used to retrieve a range of dates based on a specific start date and interval. For example, getting the last 30 days from a specific date.
+
+**Behavior:**
+
+**PARALLELPERIOD** returns dates in the same period (e.g., same months, same days) shifted by a specified number of intervals.
+
+**DATESINPERIOD** returns a continuous range of dates starting from a specified date and includes a specified number of intervals.
+
+**Use Cases**
+
+**PARALLELPERIOD:** Useful for year-over-year (YoY), quarter-over-quarter (QoQ), or month-over-month (MoM) comparisons.
+
+**DATESINPERIOD:** Useful for rolling periods like the last 7 days, last 30 days, last 12 months, etc.
+
 **3. SAMEPERIODLASTYEAR(<dates>)**
+
+It shifts the context to the exact same period in the previous year. It’s particularly useful for year-over-year comparisons.
 
 get sales from the same period in the previous year:
 
@@ -48,16 +73,17 @@ CALCULATE(
 )
 
 **4.DATESBETWEEN**
+It is used to return a table containing a contiguous set of dates that are between the specified start and end dates. This function is useful for creating custom date ranges that can be used in various calculations and analyses.
 
-DATESBETWEEN(<dates>, <start_date>, <end_date>)
+**DATESBETWEEN(<dates>, <start_date>, <end_date>)**
 
-dates: A column containing dates.
+**dates:** A column containing dates.
 
-start_date: The start date.
+**start_date:** The start date.
 
-end_date: The end date.
+**end_date:** The end date.
 
-get sales between two specific dates:
+Get sales between two specific dates:
 
 SalesBetweenDates = 
 CALCULATE(
@@ -71,13 +97,13 @@ The DATEADD function in DAX is used to shift a set of dates by a specified numbe
 
 DATEADD(<dates>, <number_of_intervals>, <interval>)
 
-dates: A column containing dates.
+**dates:** A column containing dates.
 
-number_of_intervals: The number of intervals to shift the dates. A positive value moves forward in time, and a negative value moves backward in time.
+**number_of_intervals:** The number of intervals to shift the dates. A positive value moves forward in time, and a negative value moves backward in time.
 
-interval: The interval to shift by. This can be DAY, MONTH, QUARTER, or YEAR.
+**interval:** The interval to shift by. This can be DAY, MONTH, QUARTER, or YEAR.
 
-Examples
+**Examples:**
 1. Comparing Sales to the Same Period Last Month
 2. Comparing Sales to the Same Period Last Quarter
 
