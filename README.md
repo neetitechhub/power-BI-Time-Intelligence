@@ -43,21 +43,30 @@ CALCULATE(
 Key Differences :
 
 **PARALLELPERIOD:**
+
 Allows shifting by various intervals (day, month, quarter, year).
+
 Useful for comparing specific periods, such as this quarter last year or this month last year.
+
 Flexible in terms of intervals and the number of periods to shift.
 
 **DATESINPERIOD:**
 Returns a continuous range of dates starting from a specific date.
+
 Useful for rolling periods, like the last 7 days, last 30 days, or last 12 months.
+
 Requires a start date and can look forward or backward for a specified number of intervals.
 
 **SAMEPERIODLASTYEAR:**
 Specifically returns the same period (days, months, quarters) from the previous year.
+
 Simpler syntax for comparing the same period in the previous year.
+
 Less flexible compared to PARALLELPERIOD as it only works for year-over-year comparisons.
 
 **Use Cases :**
 PARALLELPERIOD: Ideal for flexible period-over-period comparisons, such as this quarter vs. the same quarter last year, or this month vs. the same month last year.
+
 DATESINPERIOD: Best for creating rolling windows, such as the last 12 months, last 30 days, or last 7 days from a specific date.
+
 SAMEPERIODLASTYEAR: Simplest way to perform year-over-year comparisons, useful when you need to compare metrics from the exact same period in the previous year without additional flexibility.
