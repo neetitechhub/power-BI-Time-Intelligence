@@ -1,7 +1,7 @@
 # power-BI-Time-Intelligence
 power BI Time Intelligence
 
-**PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR vs DATESBETWEEN**
+**PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR vs DATESBETWEEN vs DATE ADD**
 
 **1. PARALLELPERIOD(<dates>, <number_of_intervals>, <interval>)**
 
