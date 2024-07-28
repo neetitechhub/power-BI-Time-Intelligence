@@ -1,7 +1,7 @@
 # power-BI-Time-Intelligence
 power BI Time Intelligence
 
-**PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR**
+**PARALLELPERIOD vs DATEINPERIOD vs SAMEPERIODLASTYEAR vs DATESBETWEEN**
 
 **1. PARALLELPERIOD(<dates>, <number_of_intervals>, <interval>)**
 
@@ -47,6 +47,52 @@ CALCULATE(
     SAMEPERIODLASTYEAR(DateTable[Date])
 )
 
+**4.DATESBETWEEN**
+
+DATESBETWEEN(<dates>, <start_date>, <end_date>)
+
+dates: A column containing dates.
+
+start_date: The start date.
+
+end_date: The end date.
+
+get sales between two specific dates:
+
+SalesBetweenDates = 
+CALCULATE(
+    [TotalSales],
+    DATESBETWEEN(DateTable[Date], DATE(2023, 1, 1), DATE(2023, 12, 31))
+)
+
+**5.DATEADD**
+
+The DATEADD function in DAX is used to shift a set of dates by a specified number of intervals. It can move the dates forward or backward in time and is commonly used for time intelligence calculations.
+
+DATEADD(<dates>, <number_of_intervals>, <interval>)
+
+dates: A column containing dates.
+
+number_of_intervals: The number of intervals to shift the dates. A positive value moves forward in time, and a negative value moves backward in time.
+
+interval: The interval to shift by. This can be DAY, MONTH, QUARTER, or YEAR.
+
+Examples
+1. Comparing Sales to the Same Period Last Month
+2. Comparing Sales to the Same Period Last Quarter
+
+PreviousMonthSales = 
+CALCULATE(
+    [TotalSales],
+    DATEADD(DateTable[Date], -1, MONTH)
+)
+
+PreviousQuarterSales = 
+CALCULATE(
+    [TotalSales],
+    DATEADD(DateTable[Date], -1, QUARTER)
+)
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 Key Differences :
 
@@ -72,6 +118,8 @@ Simpler syntax for comparing the same period in the previous year.
 
 Less flexible compared to PARALLELPERIOD as it only works for year-over-year comparisons.
 
+**DATESBETWEEN:**  Returns all dates within the specified start and end dates.
+
 **Use Cases :**
 
 **PARALLELPERIOD:** Ideal for flexible period-over-period comparisons, such as this quarter vs. the same quarter last year, or this month vs. the same month last year.
@@ -79,3 +127,7 @@ Less flexible compared to PARALLELPERIOD as it only works for year-over-year com
 **DATESINPERIOD:** Best for creating rolling windows, such as the last 12 months, last 30 days, or last 7 days from a specific date.
 
 **SAMEPERIODLASTYEAR:** Simplest way to perform year-over-year comparisons, useful when you need to compare metrics from the exact same period in the previous year without additional flexibility.
+
+**DATESBETWEEN:** Use Case: Fixed periods, like the sales between two specific dates.
+
+**DATEAD:** used in visuals to compare current performance against the previous month, quarter, or year, providing valuable insights for analysis.
