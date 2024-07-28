@@ -21,17 +21,17 @@ CALCULATE(
     PARALLELPERIOD(DateTable[Date], -1, YEAR)
 )
 
-**2. DATEINPERIOD(<Dates>, <StartDate>, <NumberOfIntervals>, <Interval>)**
+**2. DATEINPERIOD(Dates, StartDate, NumberOfIntervals, Interval)**
 
 it returns a single-column table of dates shifted from the first date in the given dates column. It returns all the dates in a period, based on a specified date, number of intervals, and interval type.
 
-dates: A column containing dates.
+**dates:** A column containing dates.
 
-start_date: The date that represents the start date.
+**start_date:** The date that represents the start date.
 
-number_of_intervals: The number of intervals to shift. A positive value looks forward, and a negative value looks backward.
+**number_of_intervals:** The number of intervals to shift. A positive value looks forward, and a negative value looks backward.
 
-interval: The interval by which to shift the dates. Can be DAY, MONTH, QUARTER, or YEAR.
+**interval:** The interval by which to shift the dates. Can be DAY, MONTH, QUARTER, or YEAR.
 
 get sales from the last 12 months:
 
@@ -60,7 +60,7 @@ DATESINPERIOD is used to retrieve a range of dates based on a specific start dat
 
 **DATESINPERIOD:** Useful for rolling periods like the last 7 days, last 30 days, last 12 months, etc.
 
-**3. SAMEPERIODLASTYEAR(<dates>)**
+**3. SAMEPERIODLASTYEAR(dates)**
 
 It shifts the context to the exact same period in the previous year. It’s particularly useful for year-over-year comparisons.
 
@@ -75,7 +75,7 @@ CALCULATE(
 **4.DATESBETWEEN**
 It is used to return a table containing a contiguous set of dates that are between the specified start and end dates. This function is useful for creating custom date ranges that can be used in various calculations and analyses.
 
-**DATESBETWEEN(<dates>, <start_date>, <end_date>)**
+**DATESBETWEEN(dates, start_date, end_date)**
 
 **dates:** A column containing dates.
 
@@ -95,7 +95,7 @@ CALCULATE(
 
 The DATEADD function in DAX is used to shift a set of dates by a specified number of intervals. It can move the dates forward or backward in time and is commonly used for time intelligence calculations.
 
-DATEADD(<dates>, <number_of_intervals>, <interval>)
+**DATEADD(dates, number_of_intervals, interval)**
 
 **dates:** A column containing dates.
 
